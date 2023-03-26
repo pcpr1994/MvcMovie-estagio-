@@ -1,0 +1,31 @@
+﻿@page
+@using MvcMovie.Localization
+@using MvcMovie.Web.Pages.Movies
+@using Microsoft.Extensions.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+
+@model CreateModalModel
+@inject IStringLocalizer<MvcMovieResource> L
+@{
+    Layout = null;
+}
+
+<form asp-page="/Movies/CreateModal">
+    <abp-modal>
+        <abp-modal-header title="@L["NewMovie"].Value"></abp-modal-header>
+        <abp-modal-body>
+            
+            <abp-input asp-for="Movie.Title" />
+            <abp-select asp-for="Movie.Genreid" />
+            <abp-select asp-for="Movie.AuthorId" />
+            <abp-input asp-for="Movie.ReleaseDate" />
+            <abp-input asp-for="Movie.Rating" />
+            <abp-input asp-for="Movie.Price" />
+            <abp-input asp-for="Movie.Plot" />
+
+
+        </abp-modal-body>
+        <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
+
+    </abp-modal>
+</form>

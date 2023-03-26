@@ -1,0 +1,28 @@
+﻿@page
+@using MvcMovie.Localization
+@using MvcMovie.Web.Pages.Movies
+@using Microsoft.Extensions.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+
+@model CreateIMDBModalModel
+@inject IStringLocalizer<MvcMovieResource> L
+@{
+    Layout = null;
+}
+
+
+<form asp-page="/Movies/CreateIMDBModal">
+    <abp-modal>
+        <abp-modal-header title="@L["NewMovieIMDB"].Value">
+        </abp-modal-header>
+
+        <abp-modal-body>
+            <abp-input asp-for="MovieIdImdb.Id" />
+
+
+        </abp-modal-body>
+        <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
+
+    </abp-modal>    
+
+</form>

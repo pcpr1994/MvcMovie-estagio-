@@ -1,0 +1,73 @@
+{
+  "culture": "en",
+  "texts": {
+    "Menu:Home": "Home",
+    "Welcome": "Welcome",
+    "LongWelcomeMessage": "Welcome to the application. This is a startup project based on the ABP framework. For more information, visit abp.io.",
+
+    "Menu:MvcMovie": "MvcMovies",
+    "Menu:Movie": "Movie",
+    "Actions": "Actions",
+    "Close": "Close",
+    "Delete": "Delete",
+    "Edit": "Edit",
+    "Detail": "Detail",
+    "PublishDate": "Publish date",
+    "NewMovie": "New movie",
+
+    "NewMovieIMDB": "New movie ID IMDB",
+
+    "Name": "Name",
+    "Birthday": "Birthday",
+    "Type": "Type",
+    "Price": "Price €",
+    "€": "€",
+
+
+    "CreationTime": "Creation time",
+    "AreYouSure": "Are you sure?",
+    "AreYouSureToDelete": "Are you sure you want to delete this item?",
+
+    "MovieDeletionConfirmationMessage": "Are you sure to delete the Movie '{0}'?",
+    "SuccessfullyDeleted": "Successfully deleted!",
+
+    "Permission:MvcMovie": "Movies",
+    "Permission:Movie.Create": "Creating new Movie",
+    "Permission:Movie.Edit": "Editing the Movie",
+    "Permission:Movie.Detail": "Detail the Movie",
+    "Permission:Movie.Delete": "Deleting the Movie",
+
+    "Permission:Genre": "Genre",
+    "Permission:Genre.Create": "Creating new Genre",
+    "Permission:Genre.Edit": "Editing the Genre",
+    "Permission:Genre.Delete": "Deleting the Genre",
+
+
+    "Permission:Author": "Author",
+    "Permission:Author.Create": "Creating new Author",
+    "Permission:Author.Edit": "Editing the Author",
+    "Permission:Author.Delete": "Deleting the Author",
+
+    "MvcMovie: 00001": "There is already an movie with the same name: {name}",
+
+    "MvcMovie: 00002": "There is already an genre with the same name: {name}",
+
+    "MvcMovie: 00003": "There is already an author with the same name: {name}",
+
+    "Menu:Genres": "Genres",
+    "Genres": "Genres",
+    "GenreDeletionConfirmationMessage": "Are you sure to delete the genre '{0}'?",
+    "NewGenres": "New genre",
+
+
+    "Menu:Authors": "Authors",
+    "Authors": "Authors",
+    "AuthorDeletionConfirmationMessage": "Are you sure to delete the author '{0}'?",
+    "NewAuthor": "New Author",
+    "NewAuthorButton": "New Author",
+
+
+    "MovieAuthor": "Filter"
+
+  }
+}

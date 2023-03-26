@@ -1,0 +1,64 @@
+﻿@page
+@using MvcMovie.Localization
+@using MvcMovie.Permissions
+@using MvcMovie.Web.Pages.Movies
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.Extensions.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@using MvcMovie.Web.Pages.Movies;
+@inject IStringLocalizer<MvcMovieResource> L
+@inject IAuthorizationService AuthorizationService
+
+@model IndexModel
+
+@section scripts
+    {
+        <abp-script src="/Pages/Movies/Index.js" />
+}
+
+<abp-card>
+    <abp-card-header>
+        <abp-row>
+            <abp-column size-md="_6">
+                <abp-card-title>@L["Movies"]</abp-card-title>
+            </abp-column>
+            <abp-column size-md="_6" class="text-end">
+                @if (await AuthorizationService
+                .IsGrantedAnyAsync(MvcMoviePermissions.Movies.Create))
+                {
+                    <abp-button id="NewMovieButton"
+                            text="@L["NewMovie"].Value"
+                            icon="plus"
+                            button-type="Primary" />
+
+                      
+                }
+                <abp-button id="NewMovieIMDBButton"
+                            text="@L["NewMovieIMDB"].Value"
+                            icon="plus"
+                            button-type="Primary" />
+
+            </abp-column>
+        </abp-row>
+
+
+<form asp-page="/Movies/Index">
+    <p>
+        <select asp-for="MovieAuthor" asp-items="Model.Authors" >
+            <option value=''>All</option>
+        </select>
+
+        @*<select asp-for="MovieGenre" asp-items="Model.Genres">
+            <option value="">All</option>
+        </select>*@
+
+    <input id="FilterMovieAuthorButton"  type="button" value="Filter" />
+    </p>
+</form>
+
+
+    </abp-card-header>
+    <abp-card-body>
+        <abp-table striped-rows="true" id="MoviesTable"></abp-table>
+    </abp-card-body>
+</abp-card>

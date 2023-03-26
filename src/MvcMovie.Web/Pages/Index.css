@@ -1,0 +1,21 @@
+body {
+    
+}
+/*
+.movieGrid {
+    display: grid;
+    grid-template-columns: 300px 300px 300px 300px;
+    grid-template-rows: 300px;
+    gap: 2px;
+    padding: 10px;
+    margin-block-end: 5px;
+}
+    .movieGrid > div {
+        padding: 10px 10px 10px 10px;
+        font-size: 16px;
+        font-family: Garamond;
+    }*/
+
+.tableFil {
+    padding: 100px; 
+}

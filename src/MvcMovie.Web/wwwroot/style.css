@@ -1,0 +1,107 @@
+﻿
+    * {
+        margin: 0;
+        padding: 0;
+    }
+/*
+    #imdb {
+        text-align: left;
+    }*/
+
+    .bodyy {
+        background-color: rgb(10,10,10);
+        color: whitesmoke;
+        font-size: 16px;
+        font-family: Garamond;
+    }
+
+    .movietitle {
+        font-size: 40pt;
+        font-weight: bold;
+        color: whitesmoke;
+        text-align: center;
+        text-shadow: 2px 2px burlywood;
+        font-family: Verdana;
+    }
+
+  /*  .infonextTitle {
+        text-decoration: underline;
+        font-weight: bold;
+        font-size: 16px;
+        text-transform: uppercase;
+        font-family: Garamond;
+    }*/
+
+    /*.infoDirecWri {
+        font-weight: bold;
+        font-size: 16px;
+        text-transform: uppercase;
+        font-family: Garamond;
+    }*/
+    /*  PARA AS IMAGENS DO FIM*/
+/*    .grid-container {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto;
+        gap: 2px;
+        padding: 10px;
+    }
+
+        .grid-container > div {
+            padding: 1px 1px;
+            font-size: 16px;
+            font-family: Garamond;
+        }
+*/
+
+    /*PARA O VIDEO*/
+/*.grid-container-video {
+    display: grid;
+    grid-template-columns: 220px 800px;
+    grid-template-rows: 100px 480px;
+    gap: 2px;
+    padding: 10px;
+    margin-block-end: 5px;
+}
+
+
+        .grid-container-video > div {
+            padding: 50px 2px;
+            font-size: 16px;
+            font-family: Garamond;
+        }
+*/
+
+
+/*    .DireWriSta {
+        margin-block-start: 2px;
+        margin-top: 2px;
+    }
+*/
+/*.star {
+    margin-block-start: 5px;
+}*/
+
+
+img {
+    max-height: 600px;
+    max-width: 900px;
+    object-fit: contain;
+}
+
+
+/*PARA AS IMAGENS*/
+/*  Bootstrap*/
+.carousel-item {
+    /*height: 250px;*/ /*
+    min-height: 100px;*/
+    max-height: 600px;
+    max-width: 900px;
+    align-items: center;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+

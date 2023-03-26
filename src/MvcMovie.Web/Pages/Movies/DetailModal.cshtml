@@ -1,0 +1,191 @@
+﻿@page
+@using MvcMovie.Localization
+@using MvcMovie.Web.Pages.Movies
+@using Microsoft.Extensions.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+
+
+@model DetailModalModel
+@inject IStringLocalizer<MvcMovieResource> L
+
+@{
+    Layout = null;
+}
+
+@*@*@*@*<!-- Owl Carousel CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" rel="stylesheet" />
+
+<!-- Owl Carousel JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>*@*@*@*@
+
+
+<form asp-page="/Movies/DetailModal" >
+    <abp-modal size="ExtraLarge">
+        <abp-modal-header class="bodyy" >
+            <abp-card-text><p id="imdb">IdImdb: @Model.DetailMovie.IdImdb </p> </abp-card-text>
+
+            <link rel="stylesheet" href="~/style.css" />
+            <script src="~/Detail.js"></script>
+
+        </abp-modal-header>
+
+
+        <abp-modal-body class="bodyy">
+
+
+            <abp-card-title><h1 class="container text-center col-12 movietitle"> @Model.DetailMovie.Title </h1></abp-card-title>
+                    <abp-card-text>@*<var id="infonextTitle">Plot :</var> *@
+                <div class="container text p-2">
+                    @Model.DetailMovie.Plot
+                 </div>
+                         </abp-card-text>
+
+           
+               <div class="container text-center p-2">
+                   <div class="row p-2"> 
+                       
+                            <div class="col-2">
+                                <var class="fw-bold" >Time Minutes : </var> @Model.DetailMovie.RuntimeMins
+                            </div>
+                            <div class="col-2">
+                                <var class="fw-bold "> Language : </var> @Model.DetailMovie.Languages
+                            </div>
+                            <div class="col">
+                                 <var class="fw-bold">  ReleaseDate : </var> @Model.DetailMovie.ReleaseDate.Date.ToLongDateString()
+                            </div>
+                            <div class="col-2">
+                                <var class="fw-bold">Countries : </var> @Model.DetailMovie.Countries
+                            </div>
+                            
+                    </div>
+                  
+                   <div class="row p-2">
+                        <div class="col-2">
+                            <var class="fw-bold"> Rating : </var>@Model.DetailMovie.Rating / 10
+                        </div>
+                       <div class="col-4">
+                            <var class="fw-bold"> Genre: </var> @Model.DetailMovie.GenreDescription
+                       </div>
+                       <div class="col">
+                            <var class="fw-bold"> Awards : </var> @Model.DetailMovie.Awards
+                       </div> 
+
+                   </div>
+               </div>
+
+
+
+            <div class="container p-2">
+                <div class="row">
+                    <div class="col-2 m-0 p-0">
+                        <img src=@Model.DetailMovie.LinkPoster1 style="max-width: 180px;">
+                    </div>
+                    
+                    <div class ="col-10">
+                        <iframe width="900" height="480"
+                                src="@Model.DetailMovie.LinkEmbed">
+                        </iframe>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+                   @* <div class ="grid-container-video">
+                        <div> 
+                            <img src=@Model.DetailMovie.LinkPoster1 style="max-width: 200px;" > 
+                        </div>
+                        <div>
+                            <iframe width="900" height="480"
+                                    src="@Model.DetailMovie.LinkEmbed">
+                            </iframe>
+                        </div>
+                        
+                    </div>*@
+
+            <div class="container text-center col-11 p-4"> @Model.DetailMovie.VideoDescription</div>
+
+                      <p></p>
+
+            <div class="container text-center p-2">
+                <div class="row">
+                    <div class="col">
+                        <var class="fw-bold"> Director : </var>@Model.DetailMovie.AuthorName
+
+                    </div>
+
+                </div>
+                <div class="row p-4">
+                    <div class="col">
+                        <var class="fw-bold"> Writers : </var>@Model.DetailMovie.Writers
+
+                    </div>
+                    <div class="col">
+                        <var class="fw-bold"> Stars : </var>@Model.DetailMovie.Stars
+
+                    </div>
+
+                </div>
+                      @*  <abp-card-text> <var class="infoDirecWri">Director:</var> @Model.DetailMovie.AuthorName  |  | 
+                      
+                            <var class="infoDirecWri">Writers:</var> @Model.DetailMovie.Writers
+
+                            <abp-card-text class="star">
+                            <var class="infoDirecWri">Stars:</var> @Model.DetailMovie.Stars
+                            </abp-card-text>
+
+                        </abp-card-text>*@
+    
+
+                    </div>
+
+
+
+
+ 
+
+
+
+                        @*  PARA COLOCAR AS IMAGENS EM SLIDE*@
+
+
+
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    @*
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>*@
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src=@Model.DetailMovie.Image1 class="d-block w-100" alt="Slide 1">
+                            </div>
+                            <div class="carousel-item">
+                                <img src=@Model.DetailMovie.Image2 class="d-block w-100" alt="Slide 2">
+                            </div>
+                            @*<div class="carousel-item">
+                                        <img src=@Model.DetailMovie.LinkPoster2 style="height: 100%", "width=100%"  ; class="d-block w-100" alt="Slide 3">
+                            </div>*@
+                        </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                    </div>
+
+
+
+
+
+        </abp-modal-body>
+        <abp-modal-footer class="bodyy" buttons="@(AbpModalButtons.Close)"></abp-modal-footer>
+    </abp-modal>
+</form>
+
+</

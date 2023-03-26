@@ -1,0 +1,154 @@
+﻿@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using MvcMovie.Localization
+@using Volo.Abp.Users
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Pagination
+@model MvcMovie.Web.Pages.IndexModel
+@inject IHtmlLocalizer<MvcMovieResource> L
+@inject ICurrentUser CurrentUser
+@section styles {
+<abp-style src="/Pages/Index.css" />
+}
+@section scripts {
+<abp-script src="/Pages/Index.js" />
+}
+
+<abp-card-body >
+
+    
+
+<div class="container">
+    <div class="text-center">
+
+            <div class="display-3">Welcome to the Movies</div>
+
+     
+
+        @if (!CurrentUser.IsAuthenticated)
+        {
+            <a abp-button="Primary" href="~/Account/Login"><i class="fa fa-sign-in"></i> @L["Login"]</a>
+        }
+        else{
+               
+
+                <form asp-page="Index" method="get">
+                    <div class="input-group row p-4">
+                        <div class="col-8"></div>
+                        <div class="col-2">
+                            <input type="text" class="form-control" name="filter"  placeholder="Search...">
+                            <span class="input-group-btn"> </span>
+                        </div>
+                        <div class="col-2">
+                                <button class="btn btn-secondary" type="submit">Go!</button>
+                            
+                        </div>
+                    </div>
+                </form>
+
+
+             
+
+
+            <div class="container text-center p-2 page">
+                    
+                <div class="row">
+                   
+                    
+                    
+                    @for (var x = 0; x <= @Model.MoviesIndex.Items.Count()-1; x++ )
+                    {
+                            <div class="col-2 col-2 col-2 col-2 col-2 col-2">
+                            <div class="card" style="width: 12rem;">
+                                    <img src="@Model.MoviesIndex.Items[x].LinkPoster1" onerror=this.src ="https://illustoon.com/photo/5005.png" class="card-img-top" @*alt="does not exist"*@ @*width="100px" height="250px"*@>
+                              <div class="card-body">
+                                        <p class="card-title" style="font-size:12px"> @Model.MoviesIndex.Items[x].Title</p>
+                                        <p class="card-text" style="font-size:12px">
+                                           Rating: @Model.MoviesIndex.Items[x].Rating / 10 
+                                        </p>
+                                        <a href="~/Movies/DetailModal?id=@Model.MoviesIndex.Items[x].Id" class="btn btn-primary">Details</a>
+                              </div>
+                            </div>
+                              
+                              @*             
+                            <img src="@movie.LinkPoster1" width="50px" height="100px">
+                                <a href="~/Movies/DetailModal?id=@movie.Id"> <h4>@movie.Title </h4> </a>
+                            <p> @movie.Rating / 10 </p>*@
+                        </div>
+                            
+                    }
+                                                
+                        </div>
+
+
+                    <form asp-page="Index" method="get">
+                        <div class="row h-30 w-100 ">
+                            <div class="col-8"></div>
+                            
+                            <div class="col-2" id="PageSize" name="pageSize">
+                                    <label>
+                                    Show
+                                    <select name="pageSize" aria-controls="pageSize" class="form-select form-select-sm">
+                                        <option value="10">10</option>
+                                        <option value="25">25</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+
+                                    </select>
+                                     entries
+                                    </label>
+                               
+
+                                </div>
+                            <div class="col-2">
+                                <button class="btn btn-secondary" type="submit">Go!</button>
+
+                            </div>
+
+                           
+                        </div>
+
+
+
+                        </form>
+
+
+                    <abp-paginator model="Model.PagerModel" abp-id-name="MoviesIndex.Items" asp-page="Index" method="get" show-info="true">
+                        
+                        </abp-paginator>
+            </div>
+
+         
+
+            @*<div class="pagination" name="PagerModel">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination">
+                                    <li class="page-item @(Model.PagerModel.CurrentPage == 1 ? "disabled" : "")"
+                                        <a class="page-link" href="/?page=@(Model.MoviesIndex.Items.Count +5)">Anterior</a>
+                                    </li>
+                                    @for (int i = 1; i <= Model.PagerModel.TotalPageCount; i++)
+                                    {
+                                        <li class="page-item @(i == Model.PagerModel.CurrentPage ? "active" : "")">
+                                            <a class="page-link" href="/?page=@i">@i</a>
+                                        </li>
+                                    }
+                                    <li class="page-item @(Model.PagerModel.CurrentPage == Model.PagerModel.TotalPageCount ? "disabled" : "")">
+                                        <a class="page-link" href="/?page=@(Model.PagerModel.TotalPageCount + 1)">Próxima</a>
+                                    </li>
+                                </ul>
+                            </nav>
+            </div>
+            *@
+      
+
+
+                 
+
+        }
+
+    
+
+    </div>
+   
+</div>
+</abp-card-body>
+
