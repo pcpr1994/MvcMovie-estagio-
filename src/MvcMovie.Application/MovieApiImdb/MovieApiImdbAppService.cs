@@ -155,8 +155,18 @@ public class MovieApiImdbAppService : CrudAppService<
 
         if (postersList != null)
         {
-            poster1 = postersList[0].Link;
-            poster2 = postersList[1].Link;
+            if(postersList.Count == 0 )
+            {
+                poster1 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7awOjQbJp4TyD4JQriBSoaUxmreAFG1KcSw&usqp=CAU";
+                poster2 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7awOjQbJp4TyD4JQriBSoaUxmreAFG1KcSw&usqp=CAU";
+
+            }else
+            {
+                poster1 = postersList[0].Link;
+                poster2 = postersList[1].Link;
+
+            }
+            
         }
         
 
@@ -169,8 +179,18 @@ public class MovieApiImdbAppService : CrudAppService<
 
         if (imagesList != null)
         {
-            image1 = imagesList[0].Image;
-            image2 = imagesList[1].Image;
+            if(imagesList.Count == 0 )
+            {
+                image1 = "";
+                image2 = "";
+
+            }else
+            {
+                image1 = imagesList[0].Image;
+                image2 = imagesList[1].Image;
+
+            }
+            
         }
 
 
