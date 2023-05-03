@@ -40,6 +40,7 @@ using Volo.Abp.VirtualFileSystem;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MvcMovie.Permissions;
 using Volo.Abp.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace MvcMovie.Web;
 
@@ -85,7 +86,7 @@ public class MvcMovieWebModule : AbpModule
         });
     }
 
-    public override void ConfigureServices(ServiceConfigurationContext context)
+    public override void ConfigureServices(ServiceConfigurationContext context/*, IServiceCollection services*/)
     {
         var hostingEnvironment = context.Services.GetHostingEnvironment();
         var configuration = context.Services.GetConfiguration();
@@ -116,6 +117,55 @@ public class MvcMovieWebModule : AbpModule
             options.Conventions.AuthorizePage("/Authors/CreateModal", MvcMoviePermissions.Authors.Create);
             options.Conventions.AuthorizePage("/Authors/EditModal", MvcMoviePermissions.Authors.Edit);
         });
+
+        //services.AddControllersWithViews();
+
+        //services.AddDbContext<ApplicationDbContext>(options =>
+        //{
+        //    //Configurar o Entity Framework Core para utilizar o Microsoft SQL Server.
+        //    options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
+
+        //    // Registar os conjuntos de entidades necessários ao OpenIddict.
+        //    // Nota: utilize a sobrecarga genérica se precisar de substituir as entidades OpenIddict por defeito.
+        //    options.UseOpenIddict();
+        //});
+
+        //services.AddOpenIddict()
+        //    // Registar os componentes do núcleo OpenIddict.
+        //    .AddCore(options =>
+        //    {
+        //        // Configurar o OpenIddict para utilizar as lojas e modelos do Entity Framework Core.
+        //        // Nota: chamar ReplaceDefaultEntities() para substituir as entidades por defeito.
+        //        options.UseEntityFrameworkCore()
+        //            .UseDbContext<ApplicationDbContext>();
+        //    })
+
+
+        //// Registar os componentes do servidor OpenIddict.
+        //.AddServer(options =>
+        //{
+        //    // Habilitar o ponto final simbólico.
+        //    options.SetTokenEndPointUris("connect/token");
+
+        //    // Activar o fluxo de credenciais do cliente.
+        //    options.AllowClientCredentialsFlow();
+
+
+        //    options.AddDevelopmentEncryptionCertificate()
+        //            .AddDecelopmentSigningCertificate();
+
+        //    options.UseAspNetCore()
+        //            .EnableTokenEndpointPassthrough();
+        //})
+
+        //.AddValidation(options =>
+        //{
+        //    options.UseLocalServer();
+
+        //    options.UseAspNetCOre();
+        //});
+
+        //services.AddHostedService<Worker>();
 
 
     }

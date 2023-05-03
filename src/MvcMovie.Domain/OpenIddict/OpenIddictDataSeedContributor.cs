@@ -128,6 +128,38 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
                 postLogoutRedirectUri: consoleAndAngularClientRootUrl
             );
         }
+        //MvcMovie_App2
+        var consoleAndAngularClientId1 = configurationSection["MvcMovie_App_N:ClientId"];
+        if(!consoleAndAngularClientId1.IsNullOrWhiteSpace())
+        {
+            var consoleAndAngularClientRootUrl = configurationSection["MvcMovie_App_N:RootUrl"]?.TrimEnd('/');
+            await CreateApplicationAsync(
+                name: consoleAndAngularClientId1,
+                type: OpenIddictConstants.ClientTypes.Public,
+                consentType: OpenIddictConstants.ConsentTypes.Implicit,
+                displayName: "Console Test / Angular Application",
+                secret: null,
+                grantTypes: new List<string>
+                {
+                    OpenIddictConstants.GrantTypes.AuthorizationCode,
+                    OpenIddictConstants.GrantTypes.Password,
+                    OpenIddictConstants.GrantTypes.ClientCredentials,
+                    OpenIddictConstants.GrantTypes.RefreshToken
+                    //OpenIddictConstants.GrantTypes.Implicit,
+                    //OpenIddictConstants.GrantTypes.DeviceCode
+                },
+                scopes: commonScopes,
+                redirectUri: consoleAndAngularClientRootUrl,
+                clientUri: consoleAndAngularClientRootUrl,
+                postLogoutRedirectUri: consoleAndAngularClientRootUrl
+
+
+
+                );
+        }
+
+        //var consoleAndAngularClientId2 = configurationSection["Authentication:OpenIdConnect:ClientId"];
+        //if
 
         // Blazor Client
         var blazorClientId = configurationSection["MvcMovie_Blazor:ClientId"];
